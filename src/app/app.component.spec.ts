@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'barchartOpt'`, () => {
+  it(`should have as title 'StockScreenerOpt'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('barchartOpt');
+    expect(app.title).toEqual('StockScreenerOpt');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('barchartOpt app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('StockScreenerOpt app is running!');
   });
 });
