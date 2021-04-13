@@ -35,6 +35,8 @@ export class AppComponent {
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
   dataSource = ELEMENT_DATA;
 
+  showResults()
+  {}
 
   }
 
