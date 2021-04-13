@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+
+  .ordering-header .ordering-header-filter {
+    display: inline-block;
+    margin-left: 50px;
+}
+.ordering-header .ordering-header-order {
+    float: right;
+    margin-right: 20px;
+}
+
+    
