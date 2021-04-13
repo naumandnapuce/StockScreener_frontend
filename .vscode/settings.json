@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/49f1befd-61ce-4b19-9ac3-b308a7069a43/resourceGroups/Screener/providers/Microsoft.Web/sites/nscreener",
+    "appService.deploySubpath": "dist\\StockScreenerOpt"
+}
