@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
-export interface BarchartResults {
+export interface StockScreenerResults {
   symbol: string;
   price: number;
   type: string;
@@ -19,8 +19,8 @@ export interface BarchartResults {
   lastTrade: string;
 }
 
-const ELEMENT_DATA: BarchartResults[] = [
-  {symbol: 'AA', price: 123, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
+const ELEMENT_DATA: StockScreenerResults[] = [
+  {symbol: 'AA', price: 123.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
   {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
   {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
   {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
