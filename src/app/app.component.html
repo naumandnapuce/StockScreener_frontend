@@ -1,109 +1,55 @@
 <mat-tab-group>
-  <mat-tab label="Filters">
-    <div  class="col-sm" style="margin-top:10px">
-       <div class="row fixWidth">
-          Filter
-       </div>
-       <div class="row fixWidth">
+   <mat-tab label="Filters">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+     <div  class="col-sm" style="margin-top:10px">
+        <div class="row fixWidth">
           <div class="col-sm">
              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             DAYS TO EXPIRATION
-          </div>
-          <div class="col-sm">
-             <div class=row>
-                <mat-form-field>
-                   <mat-label>Range:</mat-label>
-                   <input matInput name="daysFrom">
-                </mat-form-field>
-                <mat-form-field>
-                   <mat-label>to</mat-label>
-                   <input matInput name="daysTo">
-                </mat-form-field>
-             </div>
-             <div class="row">
-                <section class="example-section">
-                   <mat-checkbox class="example-margin">Monthly Expirations</mat-checkbox>
-                   <mat-checkbox class="example-margin">Weekly Expirations</mat-checkbox>
-                </section>
-             </div>
-          </div>
-       </div>
-       <div class="row fixWidth">
-          <div class="col-sm">
-             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             LAST TRADE TIME
+             LAST PRICE
           </div>
           <div class="col-sm">
              <mat-form-field>
                 <mat-select>
-                   <mat-option value="option1">between [dates]</mat-option>
-                   <mat-option value="option2">made within last</mat-option>
+                   <mat-option value="1">greater than [value]</mat-option>
+                   <mat-option value="2">less than [value]</mat-option>
+                   <mat-option value="3">between [values]</mat-option>
+                   <mat-option value="4">greater than [field]</mat-option>
+                   <mat-option value="5">less than [field]</mat-option>
                 </mat-select>
              </mat-form-field>
+                <mat-form-field>
+                   <mat-label>Range:</mat-label><input matInput type="text" name="lastPriceFrom" [(ngModel)]="blerina.lastPriceFrom">
+                </mat-form-field>
+                <mat-form-field>
+                   <mat-label>to</mat-label><input matInput type="text" name="lastPriceTo" [(ngModel)]="blerina.lastPriceTo">
+                </mat-form-field>
+          </div>
+       </div>
+       <div class="row fixWidth">
+          <div class="col-sm">
+             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+             SYMBOL
+          </div>
+          <div class="col-sm">
              <mat-form-field>
-                <mat-select>
-                   <mat-option value="option3">2-Sessions</mat-option>
-                   <mat-option value="option4">1 Week</mat-option>
-                   <mat-option value="option5">2 Weeks</mat-option>
-                </mat-select>
+                <mat-label>Val:</mat-label>
+                <input matInput>
              </mat-form-field>
           </div>
        </div>
        <div class="row fixWidth">
           <div class="col-sm">
              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             SECURITY TYPE
-          </div>
-          <div class="col-sm">
-             <section class="example-section">
-                <mat-checkbox class="example-margin">Stock</mat-checkbox>
-                <mat-checkbox class="example-margin">Non-Common Stock</mat-checkbox>
-                <mat-checkbox class="example-margin">ETF</mat-checkbox>
-                <mat-checkbox class="example-margin">Index</mat-checkbox>
-             </section>
-          </div>
-       </div>
-       <div class="row fixWidth">
-          <div class="col-sm">
-             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             OPTION TYPE
-          </div>
-          <div class="col-sm">
-             <section class="example-section">
-                <mat-checkbox class="example-margin">Call</mat-checkbox>
-                <mat-checkbox class="example-margin">Put</mat-checkbox>
-             </section>
-          </div>
-       </div>
-       <div class="row fixWidth">
-          <div class="col-sm">
-             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             OPTION VOLUME
+             MARKET CAP $K
           </div>
           <div class="col-sm">
              <mat-form-field>
                 <mat-label>Range:</mat-label>
-                <input matInput name="daysFrom">
+                <input matInput>
              </mat-form-field>
              <mat-form-field>
                 <mat-label>to</mat-label>
-                <input matInput name="daysTo">
-             </mat-form-field>
-          </div>
-       </div>
-       <div class="row fixWidth">
-          <div class="col-sm">
-             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
-             OPTION OPEN INTEREST
-          </div>
-          <div class="col-sm">
-             <mat-form-field>
-                <mat-label>Range:</mat-label>
-                <input matInput name="daysFrom">
-             </mat-form-field>
-             <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput name="daysTo">
+                <input matInput>
              </mat-form-field>
           </div>
        </div>
@@ -115,104 +61,267 @@
           <div class="col-sm">
              <mat-form-field>
                 <mat-label>Range:</mat-label>
-                <input matInput name="daysFrom">
+                <input matInput>
              </mat-form-field>
              <mat-form-field>
                 <mat-label>to</mat-label>
-                <input matInput name="daysTo">
+                <input matInput>
              </mat-form-field>
           </div>
        </div>
-       <button mat-raised-button color="primary" (onclick)="showResults()">See Results</button>
-    </div>
- </mat-tab>
-    <mat-tab label="Results">
-
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <ng-container matColumnDef="symbol">
-              <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-            </ng-container>
-          
-            <ng-container matColumnDef="price">
-              <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
-            </ng-container>
-          
-            <ng-container matColumnDef="type">
-              <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
-            </ng-container>
-          
-            <ng-container matColumnDef="strike">
-              <mat-header-cell *matHeaderCellDef> Strike </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.strike}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="moneyness">
-                <mat-header-cell *matHeaderCellDef> Moneyness </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.moneyness}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="expDate">
-                <mat-header-cell *matHeaderCellDef> Exp Date </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.expDate}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="dte">
-                <mat-header-cell *matHeaderCellDef> Dte </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.dte}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="bid">
-                <mat-header-cell *matHeaderCellDef> Bid </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.bid}} </mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="midPoint">
-                <mat-header-cell *matHeaderCellDef> MidPoint </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.midPoint}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="ask">
-                <mat-header-cell *matHeaderCellDef> Ask </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.ask}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="last">
-                <mat-header-cell *matHeaderCellDef> Last </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.last}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="volume">
-                <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.volume}} </mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="openInt">
-                <mat-header-cell *matHeaderCellDef> OpenInt </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.openInt}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="volOI">
-                <mat-header-cell *matHeaderCellDef> vol/OI </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.volOI}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="iv">
-                <mat-header-cell *matHeaderCellDef> IV </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.iv}} </mat-cell>
-              </ng-container>
-            
-              <ng-container matColumnDef="lastTrade">
-                <mat-header-cell *matHeaderCellDef> Last Trade </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.lastTrade}} </mat-cell>
-              </ng-container>
-          
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
-
-    </mat-tab>
-</mat-tab-group>  
+       <div class="row fixWidth">
+          <div class="col-sm">
+             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+             EXCHANGE
+          </div>
+          <div class="col-sm">
+             <section class="example-section">
+                <mat-checkbox class="example-margin">AMEX</mat-checkbox>
+                <mat-checkbox class="example-margin">NYSE</mat-checkbox>
+                <mat-checkbox class="example-margin">NASDAQ</mat-checkbox>
+             </section>
+          </div>
+       </div>
+       <div class="row fixWidth">
+          <div class="col-sm">
+             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+             STRIKE IMPLIED VOLATILITY
+          </div>
+          <div class="col-sm">
+             <mat-form-field>
+                <mat-label>Range:</mat-label>
+                <input matInput>
+             </mat-form-field>
+             <mat-form-field>
+                <mat-label>to</mat-label>
+                <input matInput>
+             </mat-form-field>
+          </div>
+       </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              DAYS TO EXPIRATION
+           </div>
+           <div class="col-sm">
+              <div class=row>
+                 <mat-form-field>
+                    <mat-label>Range:</mat-label>
+                    <input matInput name="daysFrom">
+                 </mat-form-field>
+                 <mat-form-field>
+                    <mat-label>to</mat-label>
+                    <input matInput name="daysTo">
+                 </mat-form-field>
+              </div>
+              <div class="row">
+                 <section class="example-section">
+                    <mat-checkbox class="example-margin">Monthly Expirations</mat-checkbox>
+                    <mat-checkbox class="example-margin">Weekly Expirations</mat-checkbox>
+                 </section>
+              </div>
+           </div>
+        </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              LAST TRADE TIME
+           </div>
+           <div class="col-sm">
+              <mat-form-field>
+                 <mat-select>
+                    <mat-option value="option1">between [dates]</mat-option>
+                    <mat-option value="option2">made within last</mat-option>
+                 </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                 <mat-select>
+                    <mat-option value="option3">2-Sessions</mat-option>
+                    <mat-option value="option4">1 Week</mat-option>
+                    <mat-option value="option5">2 Weeks</mat-option>
+                 </mat-select>
+              </mat-form-field>
+           </div>
+        </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              SECURITY TYPE
+           </div>
+           <div class="col-sm">
+              <section class="example-section">
+                 <mat-checkbox class="example-margin">Stock</mat-checkbox>
+                 <mat-checkbox class="example-margin">Non-Common Stock</mat-checkbox>
+                 <mat-checkbox class="example-margin">ETF</mat-checkbox>
+                 <mat-checkbox class="example-margin">Index</mat-checkbox>
+              </section>
+           </div>
+        </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              OPTION TYPE
+           </div>
+           <div class="col-sm">
+              <section class="example-section">
+                 <mat-checkbox class="example-margin">Call</mat-checkbox>
+                 <mat-checkbox class="example-margin">Put</mat-checkbox>
+              </section>
+           </div>
+        </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              OPTION VOLUME
+           </div>
+           <div class="col-sm">
+              <mat-form-field>
+                 <mat-label>Range:</mat-label>
+                 <input matInput name="daysFrom">
+              </mat-form-field>
+              <mat-form-field>
+                 <mat-label>to</mat-label>
+                 <input matInput name="daysTo">
+              </mat-form-field>
+           </div>
+        </div>
+        <div class="row fixWidth">
+           <div class="col-sm">
+              <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+              OPTION OPEN INTEREST
+           </div>
+           <div class="col-sm">
+              <mat-form-field>
+                 <mat-label>Range:</mat-label>
+                 <input matInput name="daysFrom">
+              </mat-form-field>
+              <mat-form-field>
+                 <mat-label>to</mat-label>
+                 <input matInput name="daysTo">
+              </mat-form-field>
+           </div>
+        </div>
+        <div class="row fixWidth">
+          <div class="col-sm">
+             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+             BID PRICE
+          </div>
+          <div class="col-sm">
+             <mat-form-field>
+                <mat-label>From:</mat-label>
+                <input matInput>
+             </mat-form-field>
+             <mat-form-field>
+                <mat-label>to</mat-label>
+                <input matInput>
+             </mat-form-field>
+          </div>
+       </div>
+       <div class="row fixWidth">
+          <div class="col-sm">
+             <mat-icon aria-hidden="false"><span class="material-icons" style="color: red;">check_circle</span></mat-icon>
+             P/E RATIO TTM
+          </div>
+          <div class="col-sm">
+             <mat-form-field>
+                <mat-label>From:</mat-label>
+                <input matInput>
+             </mat-form-field>
+             <mat-form-field>
+                <mat-label>to</mat-label>
+                <input matInput>
+             </mat-form-field>
+          </div>
+       </div>
+        <button mat-raised-button color="primary" (onclick)="showResults()">See Results</button>
+     </div>
+   </form>
+  </mat-tab>
+     <mat-tab label="Results">
+         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+             <ng-container matColumnDef="symbol">
+               <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+               <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+             </ng-container>
+           
+             <ng-container matColumnDef="price">
+               <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+               <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+             </ng-container>
+           
+             <ng-container matColumnDef="type">
+               <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+               <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+             </ng-container>
+           
+             <ng-container matColumnDef="strike">
+               <mat-header-cell *matHeaderCellDef> Strike </mat-header-cell>
+               <mat-cell *matCellDef="let element"> {{element.strike}} </mat-cell>
+             </ng-container>
+ 
+             <ng-container matColumnDef="moneyness">
+                 <mat-header-cell *matHeaderCellDef> Moneyness </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.moneyness}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="expDate">
+                 <mat-header-cell *matHeaderCellDef> Exp Date </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.expDate}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="dte">
+                 <mat-header-cell *matHeaderCellDef> Dte </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.dte}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="bid">
+                 <mat-header-cell *matHeaderCellDef> Bid </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.bid}} </mat-cell>
+               </ng-container>
+ 
+               <ng-container matColumnDef="midPoint">
+                 <mat-header-cell *matHeaderCellDef> MidPoint </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.midPoint}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="ask">
+                 <mat-header-cell *matHeaderCellDef> Ask </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.ask}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="last">
+                 <mat-header-cell *matHeaderCellDef> Last </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.last}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="volume">
+                 <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.volume}} </mat-cell>
+               </ng-container>
+ 
+               <ng-container matColumnDef="openInt">
+                 <mat-header-cell *matHeaderCellDef> OpenInt </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.openInt}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="volOI">
+                 <mat-header-cell *matHeaderCellDef> vol/OI </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.volOI}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="iv">
+                 <mat-header-cell *matHeaderCellDef> IV </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.iv}} </mat-cell>
+               </ng-container>
+             
+               <ng-container matColumnDef="lastTrade">
+                 <mat-header-cell *matHeaderCellDef> Last Trade </mat-header-cell>
+                 <mat-cell *matCellDef="let element"> {{element.lastTrade}} </mat-cell>
+               </ng-container>
+           
+             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+           </mat-table>
+ 
+     </mat-tab>
+ </mat-tab-group>  

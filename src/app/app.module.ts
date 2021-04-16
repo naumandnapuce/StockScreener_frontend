@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -16,8 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgbModule,
-    FormsModule
+    NgbModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

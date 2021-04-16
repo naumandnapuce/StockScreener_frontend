@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import {OptionModel} from './models/option-model';
 
 export interface StockScreenerResults {
   symbol: string;
@@ -32,11 +33,16 @@ const ELEMENT_DATA: StockScreenerResults[] = [
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  blerina = new OptionModel(1,2,3,"12","23","56",3,4,false,false,true,2,3,5,3,true,false,3,3,true,false,true,true,false,true,3,3,4,5,6,3,2,6);
+
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
   dataSource = ELEMENT_DATA;
 
   showResults()
   {}
+
+  onSubmit()
+  {console.log(this.blerina)}
 
   }
 
