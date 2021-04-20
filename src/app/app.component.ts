@@ -23,8 +23,6 @@ export interface StockScreenerResults {
   lastTrade: string;
 }
 
-const ELEMENT_DATA: StockScreenerResults[] = [];
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,7 +35,7 @@ postingModel = new PostingModel(1,1000,0,0,"AMEX,NYSE,NASDAQ",0,0,0,0,0,0,"month
 constructor(private _optionService:OptionServiceService){}
 
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
-  dataSource = ELEMENT_DATA;
+  dataSource =  [];
 
   onSubmit()
   {
