@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import {OptionModel} from './models/option-model';
 import {PostingModel} from './models/posting-model';
+import {ResultModel} from './models/result-model';
 import { OptionServiceService } from "../app/services/option-service.service";
 
 export interface StockScreenerResults {
@@ -22,12 +23,7 @@ export interface StockScreenerResults {
   lastTrade: string;
 }
 
-const ELEMENT_DATA: StockScreenerResults[] = [
-  {symbol: 'AA', price: 123, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
-  {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
-  {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
-  {symbol: 'AA', price: 22.5, type: 'Put', strike: 25.00, moneyness : '-25.25%', expDate: '25/01/2021' ,  dte: 11 ,  bid: 0.06 , midPoint: 0.08 , ask: 0.09 , last: 0.09 , volume: 500 , openInt: 1.328 , volOI: 1.05 , iv: '82%' , lastTrade: '02/05/2020'},
-];
+const ELEMENT_DATA: StockScreenerResults[] = [];
 
 @Component({
   selector: 'app-root',
@@ -43,16 +39,18 @@ constructor(private _optionService:OptionServiceService){}
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
   dataSource = ELEMENT_DATA;
 
-  showResults()
-  {}
-
   onSubmit()
-  {this._optionService.postOptions(this.postingModel).subscribe(
-     data => console.log('Sukses!',data),
-     error =>  console.error('Error!',error)
-  )
+  {
+    this._optionService.postOptions(this.postingModel).subscribe(
+      data => this.FillResult(data),
+      error =>  console.error('Error!',error))
 
+
+      
   }
-
+  FillResult(data:any){
+    console.log(data);
+    this.dataSource = data.data;
+  }
   }
 
