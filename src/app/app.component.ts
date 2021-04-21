@@ -29,9 +29,10 @@ export interface StockScreenerResults {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public TabIndex = 0;
   blerina = new OptionModel(1,2,3,"12","23","56",3,4,false,false,true,2,3,5,3,true,false,3,3,true,false,true,true,false,true,3,3,4,5,6,3,2,6);
   
-postingModel = new PostingModel(1,1000,0,0,"AMEX,NYSE,NASDAQ",0,0,0,0,0,0,"monthly,weekly","1weekAgo","1,11,7,9","put,call","baseSymbol,NIO",0,0,0,0,0,0,0);
+postingModel = new PostingModel(-200,-8, "AMEX,NYSE,NASDAQ",40,100,5, 250,0,15,"monthly,weekly","previousTradingDay","1", "put","",100,250,0.2,100);
 constructor(private _optionService:OptionServiceService){}
 
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
@@ -49,6 +50,8 @@ constructor(private _optionService:OptionServiceService){}
   FillResult(data:any){
     console.log(data);
     this.dataSource = data.data;
+
+    this.TabIndex = 1;
   }
   }
 

@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group [(selectedIndex)]="TabIndex">
    <mat-tab label="Filters">
     <form #userForm="ngForm" (ngSubmit)="onSubmit()">
      <div  class="col-sm" style="margin-top:10px">
@@ -241,22 +241,22 @@
          <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
              <ng-container matColumnDef="symbol">
                <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+               <mat-cell *matCellDef="let element"> {{element.baseSymbol}} </mat-cell>
              </ng-container>
            
              <ng-container matColumnDef="price">
                <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+               <mat-cell *matCellDef="let element"> {{element.baseLastPrice}} </mat-cell>
              </ng-container>
            
              <ng-container matColumnDef="type">
                <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+               <mat-cell *matCellDef="let element"> {{element.symbolType}} </mat-cell>
              </ng-container>
            
              <ng-container matColumnDef="strike">
                <mat-header-cell *matHeaderCellDef> Strike </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.strike}} </mat-cell>
+               <mat-cell *matCellDef="let element"> {{element.strikePrice}} </mat-cell>
              </ng-container>
  
              <ng-container matColumnDef="moneyness">
@@ -266,32 +266,32 @@
              
                <ng-container matColumnDef="expDate">
                  <mat-header-cell *matHeaderCellDef> Exp Date </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.expDate}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.expirationDate}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="dte">
                  <mat-header-cell *matHeaderCellDef> Dte </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.dte}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.daysToExpiration}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="bid">
                  <mat-header-cell *matHeaderCellDef> Bid </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.bid}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.bidPrice}} </mat-cell>
                </ng-container>
  
                <ng-container matColumnDef="midPoint">
                  <mat-header-cell *matHeaderCellDef> MidPoint </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.midPoint}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.midpoint}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="ask">
                  <mat-header-cell *matHeaderCellDef> Ask </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.ask}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.askPrice}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="last">
                  <mat-header-cell *matHeaderCellDef> Last </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.last}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.lastPrice}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="volume">
@@ -301,22 +301,22 @@
  
                <ng-container matColumnDef="openInt">
                  <mat-header-cell *matHeaderCellDef> OpenInt </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.openInt}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.openInterest}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="volOI">
                  <mat-header-cell *matHeaderCellDef> vol/OI </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.volOI}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.volumeOpenInterestRatio}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="iv">
                  <mat-header-cell *matHeaderCellDef> IV </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.iv}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.volatility}} </mat-cell>
                </ng-container>
              
                <ng-container matColumnDef="lastTrade">
                  <mat-header-cell *matHeaderCellDef> Last Trade </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.lastTrade}} </mat-cell>
+                 <mat-cell *matCellDef="let element"> {{element.earningsDate}} </mat-cell>
                </ng-container>
            
              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
