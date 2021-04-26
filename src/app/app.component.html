@@ -9,7 +9,7 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-select>
+                <mat-select name="lastPrice" [(ngModel)]="optionModel.lastPrice">
                    <mat-option value="1">greater than [value]</mat-option>
                    <mat-option value="2">less than [value]</mat-option>
                    <mat-option value="3">between [values]</mat-option>
@@ -18,10 +18,10 @@
                 </mat-select>
              </mat-form-field>
                 <mat-form-field>
-                   <mat-label>Range:</mat-label><input matInput type="text" name="lastPriceFrom" [(ngModel)]="blerina.lastPriceFrom">
+                   <mat-label>Range:</mat-label><input matInput type="number" name="lastPriceFrom" [(ngModel)]="optionModel.lastPriceFrom">
                 </mat-form-field>
                 <mat-form-field>
-                   <mat-label>to</mat-label><input matInput type="text" name="lastPriceTo" [(ngModel)]="blerina.lastPriceTo">
+                   <mat-label>to</mat-label><input matInput type="number" name="lastPriceTo" [(ngModel)]="optionModel.lastPriceTo">
                 </mat-form-field>
           </div>
        </div>
@@ -32,8 +32,7 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>Val:</mat-label>
-                <input matInput>
+                <mat-label>Val:</mat-label><input matInput type="text" name="symbol" [(ngModel)]="optionModel.symbol">
              </mat-form-field>
           </div>
        </div>
@@ -44,12 +43,10 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>Range:</mat-label>
-                <input matInput>
+                <mat-label>Range:</mat-label><input matInput type="text" name="marketCapFrom" [(ngModel)]="optionModel.marketCapFrom">
              </mat-form-field>
              <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput>
+                <mat-label>to</mat-label><input matInput type="text" name="marketCapTo" [(ngModel)]="optionModel.marketCapTo">
              </mat-form-field>
           </div>
        </div>
@@ -60,12 +57,10 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>Range:</mat-label>
-                <input matInput>
+                <mat-label>Range:</mat-label><input matInput type="number" name="moneyessFrom" [(ngModel)]="optionModel.moneyessFrom">
              </mat-form-field>
              <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput>
+                <mat-label>to</mat-label><input matInput type="number" name="moneyessTo" [(ngModel)]="optionModel.moneyessTo">
              </mat-form-field>
           </div>
        </div>
@@ -76,9 +71,9 @@
           </div>
           <div class="col-sm">
              <section class="example-section">
-                <mat-checkbox class="example-margin">AMEX</mat-checkbox>
-                <mat-checkbox class="example-margin">NYSE</mat-checkbox>
-                <mat-checkbox class="example-margin">NASDAQ</mat-checkbox>
+                <mat-checkbox class="example-margin" name="exchange1" [(ngModel)]="optionModel.exchange1">AMEX</mat-checkbox>
+                <mat-checkbox class="example-margin" name="exchange2" [(ngModel)]="optionModel.exchange2">NYSE</mat-checkbox>
+                <mat-checkbox class="example-margin" name="exchange3" [(ngModel)]="optionModel.exchange3">NASDAQ</mat-checkbox>
              </section>
           </div>
        </div>
@@ -89,12 +84,10 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>Range:</mat-label>
-                <input matInput>
+                <mat-label>Range:</mat-label><input matInput type="number" name="strikeFrom" [(ngModel)]="optionModel.strikeFrom">
              </mat-form-field>
              <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput>
+                <mat-label>to</mat-label><input matInput type="number" name="strikeTo" [(ngModel)]="optionModel.strikeTo">
              </mat-form-field>
           </div>
        </div>
@@ -106,18 +99,16 @@
            <div class="col-sm">
               <div class=row>
                  <mat-form-field>
-                    <mat-label>Range:</mat-label>
-                    <input matInput name="daysFrom">
+                    <mat-label>Range:</mat-label><input matInput type="number" name="daysToExpFrom" [(ngModel)]="optionModel.daysToExpFrom">
                  </mat-form-field>
                  <mat-form-field>
-                    <mat-label>to</mat-label>
-                    <input matInput name="daysTo">
+                    <mat-label>to</mat-label><input matInput type="number" name="daysToExpTo" [(ngModel)]="optionModel.daysToExpTo">
                  </mat-form-field>
               </div>
               <div class="row">
                  <section class="example-section">
-                    <mat-checkbox class="example-margin">Monthly Expirations</mat-checkbox>
-                    <mat-checkbox class="example-margin">Weekly Expirations</mat-checkbox>
+                    <mat-checkbox class="example-margin" name="monthlyExp" [(ngModel)]="optionModel.monthlyExp">Monthly Expirations</mat-checkbox>
+                    <mat-checkbox class="example-margin" name="weeklyExp" [(ngModel)]="optionModel.weeklyExp">Weekly Expirations</mat-checkbox>
                  </section>
               </div>
            </div>
@@ -129,16 +120,17 @@
            </div>
            <div class="col-sm">
               <mat-form-field>
-                 <mat-select>
-                    <mat-option value="option1">between [dates]</mat-option>
-                    <mat-option value="option2">made within last</mat-option>
+                 <mat-select name="lastTradeType" [(ngModel)]="optionModel.lastTradeType">
+                    <mat-option value="1">between [dates]</mat-option>
+                    <mat-option value="2">made within last</mat-option>
                  </mat-select>
               </mat-form-field>
               <mat-form-field>
-                 <mat-select>
-                    <mat-option value="option3">2-Sessions</mat-option>
-                    <mat-option value="option4">1 Week</mat-option>
-                    <mat-option value="option5">2 Weeks</mat-option>
+                 <mat-select name="lastTradeVal" [(ngModel)]="optionModel.lastTradeVal">
+                    <mat-option value="1">Session</mat-option>
+                    <mat-option value="2">2-Sessions</mat-option>
+                    <mat-option value="3">1 Week</mat-option>
+                    <mat-option value="4">2 Weeks</mat-option>
                  </mat-select>
               </mat-form-field>
            </div>
@@ -150,10 +142,10 @@
            </div>
            <div class="col-sm">
               <section class="example-section">
-                 <mat-checkbox class="example-margin">Stock</mat-checkbox>
-                 <mat-checkbox class="example-margin">Non-Common Stock</mat-checkbox>
-                 <mat-checkbox class="example-margin">ETF</mat-checkbox>
-                 <mat-checkbox class="example-margin">Index</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="secStock" [(ngModel)]="optionModel.secStock">Stock</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="secNonStock" [(ngModel)]="optionModel.secNonStock">Non-Common Stock</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="secEtf" [(ngModel)]="optionModel.secEtf">ETF</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="secIndex" [(ngModel)]="optionModel.secIndex">Index</mat-checkbox>
               </section>
            </div>
         </div>
@@ -164,8 +156,8 @@
            </div>
            <div class="col-sm">
               <section class="example-section">
-                 <mat-checkbox class="example-margin">Call</mat-checkbox>
-                 <mat-checkbox class="example-margin">Put</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="optCall" [(ngModel)]="optionModel.optCall">Call</mat-checkbox>
+                 <mat-checkbox class="example-margin" name="optPut" [(ngModel)]="optionModel.optPut">Put</mat-checkbox>
               </section>
            </div>
         </div>
@@ -176,12 +168,10 @@
            </div>
            <div class="col-sm">
               <mat-form-field>
-                 <mat-label>Range:</mat-label>
-                 <input matInput name="daysFrom">
+                 <mat-label>Range:</mat-label><input matInput type="number" name="optVolFrom" [(ngModel)]="optionModel.optVolFrom">
               </mat-form-field>
               <mat-form-field>
-                 <mat-label>to</mat-label>
-                 <input matInput name="daysTo">
+                 <mat-label>to</mat-label><input matInput type="number" name="optVolTo" [(ngModel)]="optionModel.optVolTo">
               </mat-form-field>
            </div>
         </div>
@@ -192,12 +182,10 @@
            </div>
            <div class="col-sm">
               <mat-form-field>
-                 <mat-label>Range:</mat-label>
-                 <input matInput name="daysFrom">
+                 <mat-label>Range:</mat-label><input matInput type="number" name="optOpIntFrom" [(ngModel)]="optionModel.optOpIntFrom">
               </mat-form-field>
               <mat-form-field>
-                 <mat-label>to</mat-label>
-                 <input matInput name="daysTo">
+                 <mat-label>to</mat-label><input matInput type="number" name="optOpIntTo" [(ngModel)]="optionModel.optOpIntTo">
               </mat-form-field>
            </div>
         </div>
@@ -208,12 +196,7 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>From:</mat-label>
-                <input matInput>
-             </mat-form-field>
-             <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput>
+                <mat-label>Val:</mat-label><input matInput type="number" name="bid" [(ngModel)]="optionModel.bid">
              </mat-form-field>
           </div>
        </div>
@@ -224,12 +207,10 @@
           </div>
           <div class="col-sm">
              <mat-form-field>
-                <mat-label>From:</mat-label>
-                <input matInput>
+                <mat-label>From:</mat-label><input matInput type="number" name="ratioFrom" [(ngModel)]="optionModel.ratioFrom">
              </mat-form-field>
              <mat-form-field>
-                <mat-label>to</mat-label>
-                <input matInput>
+                <mat-label>to</mat-label><input matInput type="number" name="ratioTo" [(ngModel)]="optionModel.ratioTo">
              </mat-form-field>
           </div>
        </div>
