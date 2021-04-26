@@ -32,7 +32,7 @@ export class AppComponent {
   public TabIndex = 0;
   blerina = new OptionModel(1,2,3,"12","23","56",3,4,false,false,true,2,3,5,3,true,false,3,3,true,false,true,true,false,true,3,3,4,5,6,3,2,6);
   
-postingModel = new PostingModel(-200,-8, "AMEX,NYSE,NASDAQ",40,100,5, 250,0,15,"monthly,weekly","previousTradingDay","1", "put","",100,250,0.2,100);
+postingModel = new PostingModel(-200,-8,"AMEX,NYSE,NASDAQ",40,100,0,15,"monthly,weekly","previousTradingDay","1","put","",0.2,250,null,100,null,5,250,null,100);
 constructor(private _optionService:OptionServiceService){}
 
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
@@ -42,7 +42,7 @@ constructor(private _optionService:OptionServiceService){}
   {
     this._optionService.postOptions(this.postingModel).subscribe(
       data => this.FillResult(data),
-      error =>  console.error('Error!',error))
+      error =>  console.error(this.postingModel,error))
 
 
       
