@@ -250,16 +250,11 @@
                  <mat-cell *matCellDef="let element"> {{element.expirationDate}} </mat-cell>
                </ng-container>
              
-               <ng-container matColumnDef="dte">
-                 <mat-header-cell *matHeaderCellDef> Dte </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.daysToExpiration}} </mat-cell>
-               </ng-container>
-             
                <ng-container matColumnDef="bid">
                  <mat-header-cell *matHeaderCellDef> Bid </mat-header-cell>
                  <mat-cell *matCellDef="let element"> {{element.bidPrice}} </mat-cell>
                </ng-container>
- 
+
                <ng-container matColumnDef="midPoint">
                  <mat-header-cell *matHeaderCellDef> MidPoint </mat-header-cell>
                  <mat-cell *matCellDef="let element"> {{element.midpoint}} </mat-cell>
@@ -274,7 +269,7 @@
                  <mat-header-cell *matHeaderCellDef> Last </mat-header-cell>
                  <mat-cell *matCellDef="let element"> {{element.lastPrice}} </mat-cell>
                </ng-container>
-             
+            
                <ng-container matColumnDef="volume">
                  <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
                  <mat-cell *matCellDef="let element"> {{element.volume}} </mat-cell>
@@ -285,20 +280,25 @@
                  <mat-cell *matCellDef="let element"> {{element.openInterest}} </mat-cell>
                </ng-container>
              
-               <ng-container matColumnDef="volOI">
-                 <mat-header-cell *matHeaderCellDef> vol/OI </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.volumeOpenInterestRatio}} </mat-cell>
-               </ng-container>
-             
                <ng-container matColumnDef="iv">
                  <mat-header-cell *matHeaderCellDef> IV </mat-header-cell>
                  <mat-cell *matCellDef="let element"> {{element.volatility}} </mat-cell>
                </ng-container>
-             
-               <ng-container matColumnDef="lastTrade">
-                 <mat-header-cell *matHeaderCellDef> Last Trade </mat-header-cell>
-                 <mat-cell *matCellDef="let element"> {{element.earningsDate}} </mat-cell>
-               </ng-container>
+
+               <ng-container matColumnDef="earningsDate">
+                  <mat-header-cell *matHeaderCellDef> EarningsDate </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.earningsDate}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="marketCap">
+                  <mat-header-cell class="mat-column-marketCap" *matHeaderCellDef> MarketCap </mat-header-cell>
+                  <mat-cell class="mat-column-marketCap" *matCellDef="let element"> {{element.marketCap}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="basePeRatio">
+                  <mat-header-cell *matHeaderCellDef> BasePeRatio </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.basePeRatio}} </mat-cell>
+                </ng-container>
            
              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

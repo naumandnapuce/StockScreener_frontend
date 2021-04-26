@@ -15,7 +15,7 @@ export class AppComponent {
   isValidModel=true;
   constructor(private _optionService:OptionServiceService){}
 
-  displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'dte', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'volOI', 'iv', 'lastTrade'];
+  displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'iv', 'last', 'earningsDate', 'marketCap', 'basePeRatio'];
   dataSource =  [];
 
   onSubmit()
