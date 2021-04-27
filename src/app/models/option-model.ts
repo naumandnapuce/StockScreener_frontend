@@ -1,9 +1,6 @@
 export class OptionModel {
     constructor (
     public lastPrice:number,
-    public symbol:string,
-    public marketCapFrom:string,
-    public marketCapTo:string,
     public moneyessFrom: number,
     public moneyessTo: number,
     public exchange1:boolean,
@@ -24,13 +21,16 @@ export class OptionModel {
     public optCall:boolean,
     public optPut:boolean,
     public bid:number,
-    public optOpIntFrom?:number| null,
+    public optOpIntFrom:number,
+    public ratioTo:number,
+    public lastPriceFrom:number,
+    public lastPriceTo:number,
+    public optVolFrom:number,
     public optOpIntTo?:number| null,
     public optVolTo?:number| null,
-    public optVolFrom?:number| null,
-    public lastPriceFrom?:number| null,
-    public lastPriceTo?:number| null,
     public ratioFrom?:number| null,
-    public ratioTo?:number| null
+    public symbol?:string| null,
+    public marketCapFrom?:string| null,
+    public marketCapTo?:string| null
     ){}
 }

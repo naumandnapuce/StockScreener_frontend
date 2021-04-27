@@ -41,50 +41,51 @@ export class AppComponent {
 
   FillPostingModel(optionModel: OptionModel): PostingModel {
     // mbushje e checkboxeve
-    let exchangeResult: string ="";
+    let exchangeResult: any;
+    exchangeResult="";
     if (optionModel.exchange1==true) {exchangeResult+=",AMEX";}
     if (optionModel.exchange2==true) {exchangeResult+=",NYSE" ;}
     if (optionModel.exchange3==true) {exchangeResult+=",NASDAQ" ;}
-    exchangeResult = exchangeResult.substring(1);
+    if (exchangeResult != ""){exchangeResult = exchangeResult.substring(1);} else {exchangeResult = null;}
 
-    let expirationTypeResult: string ="";
+    let expirationTypeResult: any;
+    expirationTypeResult="";
     if (optionModel.weeklyExp==true) {expirationTypeResult+=",monthly";}
     if (optionModel.monthlyExp==true) {expirationTypeResult+=",weekly" ;}
-    expirationTypeResult = expirationTypeResult.substring(1);
+    if (expirationTypeResult != ""){expirationTypeResult = expirationTypeResult.substring(1);} else {expirationTypeResult=null;}
 
-    let symbolTypeResult: string ="";
+    let symbolTypeResult: any;
+    symbolTypeResult = "";
     if (optionModel.optCall==true) {symbolTypeResult+=",call";}
     if (optionModel.optPut==true) {symbolTypeResult+=",put" ;}
-    symbolTypeResult = symbolTypeResult.substring(1);
+    if (symbolTypeResult != ""){symbolTypeResult = symbolTypeResult.substring(1);}else {symbolTypeResult=null;}
 
-    let baseSymbolTypeResult: string ="";
+    let baseSymbolTypeResult: any;
+    baseSymbolTypeResult = "";
     if (optionModel.secStock==true) {baseSymbolTypeResult+=",1";}
     if (optionModel.secNonStock==true) {baseSymbolTypeResult+=",11" ;}
     if (optionModel.secEtf==true) {baseSymbolTypeResult+=",7" ;}
     if (optionModel.secIndex==true) {baseSymbolTypeResult+=",9" ;}
-    baseSymbolTypeResult = baseSymbolTypeResult.substring(1);
+    if (baseSymbolTypeResult !=  ""){baseSymbolTypeResult = baseSymbolTypeResult.substring(1);} else {baseSymbolTypeResult = null;}
 
     //marrja nga combo
 
-    let lastTrafeResult: string ="";
-    if (optionModel.lastTradeVal==1) {lastTrafeResult+="lastTradingDay";}
-    if (optionModel.lastTradeVal==2) {lastTrafeResult+="previousTradingDay";}
-    if (optionModel.lastTradeVal==3) {lastTrafeResult+="1weekAgo";}
-    if (optionModel.lastTradeVal==4) {lastTrafeResult+="2weeksAgo";}
+    let lastTradeResult:  any;
+    if (optionModel.lastTradeVal==1) {lastTradeResult="lastTradingDay";}
+    if (optionModel.lastTradeVal==2) {lastTradeResult="previousTradingDay";}
+    if (optionModel.lastTradeVal==3) {lastTradeResult="1weekAgo";}
+    if (optionModel.lastTradeVal==4) {lastTradeResult="2weeksAgo";}
+    if (lastTradeResult ==undefined) {lastTradeResult= null}
+
 
     //kthimi i vlerave  undefined
 
-    if (optionModel.symbol ==undefined) {optionModel.symbol= "null"}
-    if (optionModel.marketCapFrom ==undefined) {optionModel.marketCapFrom= "null"}
-    if (optionModel.marketCapTo ==undefined) {optionModel.marketCapTo= "null"}
-    if (optionModel.optOpIntFrom ==undefined) {optionModel.optOpIntFrom= null}
+    if (optionModel.symbol ==undefined) {optionModel.symbol= null}
+    if (optionModel.marketCapFrom ==undefined) {optionModel.marketCapFrom= null}
+    if (optionModel.marketCapTo ==undefined) {optionModel.marketCapTo= null}
     if (optionModel.optOpIntTo ==undefined) {optionModel.optOpIntTo= null}
-    if (optionModel.optVolFrom ==undefined) {optionModel.optVolFrom= null}
     if (optionModel.optVolTo ==undefined) {optionModel.optVolTo= null}
-    if (optionModel.lastPriceFrom ==undefined) {optionModel.lastPriceFrom= null}
-    if (optionModel.lastPriceTo ==undefined) {optionModel.lastPriceTo= null}
     if (optionModel.ratioFrom ==undefined) {optionModel.ratioFrom= null}
-    if (optionModel.ratioTo ==undefined) {optionModel.ratioTo= null}
 
     //this.postingModel = new PostingModel(-200,-8,"AMEX,NYSE,NASDAQ",40,200,0,15,"monthly,weekly","previousTradingDay","1","put","",0.2,250,null,100,null,5,250,null,100);
     //console.log(this.postingModel);
@@ -99,7 +100,7 @@ export class AppComponent {
       daysToExpirationFrom: optionModel.daysToExpFrom,
       daysToExpirationTo: optionModel.daysToExpTo,
       expirationType: expirationTypeResult,
-      tradeTime: lastTrafeResult,
+      tradeTime: lastTradeResult,
       baseSymbolType: baseSymbolTypeResult,
       symbolType: symbolTypeResult,
       marketCapFrom: optionModel.marketCapFrom,
