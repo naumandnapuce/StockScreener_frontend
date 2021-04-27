@@ -13,6 +13,8 @@ export class PostingModel {
         public symbolType:string,
         public baseSymbol:string,
         public bidPrice:number,
+        public marketCapFrom:string,
+        public marketCapTo:string,
         public openInterestFrom?:number| null,
         public openInterestTo?:number| null,
         public volumeFrom?:number| null,

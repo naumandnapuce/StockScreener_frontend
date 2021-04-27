@@ -15,7 +15,7 @@ export class AppComponent {
   isValidModel=true;
   constructor(private _optionService:OptionServiceService){}
 
-  displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'bid', 'midPoint', 'ask', 'last', 'volume', 'openInt', 'iv', 'last', 'earningsDate', 'marketCap', 'basePeRatio'];
+  displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'bid', 'last', 'volume', 'openInt', 'iv', 'last', 'earningsDate', 'marketCap', 'basePeRatio'];
   dataSource =  [];
 
   onSubmit()
@@ -74,7 +74,9 @@ export class AppComponent {
 
     //kthimi i vlerave  undefined
 
-    if (optionModel.symbol ==undefined) {optionModel.symbol= ""}
+    if (optionModel.symbol ==undefined) {optionModel.symbol= "null"}
+    if (optionModel.marketCapFrom ==undefined) {optionModel.marketCapFrom= "null"}
+    if (optionModel.marketCapTo ==undefined) {optionModel.marketCapTo= "null"}
     if (optionModel.optOpIntFrom ==undefined) {optionModel.optOpIntFrom= null}
     if (optionModel.optOpIntTo ==undefined) {optionModel.optOpIntTo= null}
     if (optionModel.optVolFrom ==undefined) {optionModel.optVolFrom= null}
@@ -84,8 +86,8 @@ export class AppComponent {
     if (optionModel.ratioFrom ==undefined) {optionModel.ratioFrom= null}
     if (optionModel.ratioTo ==undefined) {optionModel.ratioTo= null}
 
-    this.postingModel = new PostingModel(-200,-8,"AMEX,NYSE,NASDAQ",40,200,0,15,"monthly,weekly","previousTradingDay","1","put","",0.2,250,null,100,null,5,250,null,100);
-    console.log(this.postingModel);
+    //this.postingModel = new PostingModel(-200,-8,"AMEX,NYSE,NASDAQ",40,200,0,15,"monthly,weekly","previousTradingDay","1","put","",0.2,250,null,100,null,5,250,null,100);
+    //console.log(this.postingModel);
     //mbushje e objektit postingModel
 
     this.postingModel = <PostingModel><unknown>{
@@ -100,6 +102,8 @@ export class AppComponent {
       tradeTime: lastTrafeResult,
       baseSymbolType: baseSymbolTypeResult,
       symbolType: symbolTypeResult,
+      marketCapFrom: optionModel.marketCapFrom,
+      marketCapTo: optionModel.marketCapTo,
       baseSymbol: optionModel.symbol,
       bidPrice: optionModel.bid,
       openInterestFrom: optionModel.optOpIntFrom,
