@@ -17,7 +17,7 @@ export class AppComponent {
 
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'bid', 'last', 'volume', 'openInt', 'iv', 'last', 'earningsDate', 'marketCap', 'basePeRatio'];
   dataSource =  [];
-
+  totaleNrofResults:Number=0;
   onSubmit()
   {
     //console.log("Te dhenat hyrese: "+this.optionModel);
@@ -36,6 +36,7 @@ export class AppComponent {
   FillResult(data:any){
      console.log(data);
     this.dataSource = data.data;
+    this.totaleNrofResults=data.count;
     this.TabIndex = 1;
   }
 
