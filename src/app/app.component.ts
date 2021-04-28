@@ -18,8 +18,15 @@ export class AppComponent {
   displayedColumns: string[] = ['symbol', 'price', 'type', 'strike', 'moneyness', 'expDate', 'bid', 'last', 'volume', 'openInt', 'iv', 'last', 'earningsDate', 'marketCap', 'basePeRatio'];
   dataSource =  [];
   totaleNrofResults:Number=0;
+
+  ngOnInit() {
+    this.optionModel = JSON.parse((localStorage.getItem("datas"))||'{}');
+ }
+
   onSubmit()
   {
+    //ruajme te dhenat ne localstorage
+    localStorage.setItem("datas", JSON.stringify(this.optionModel));
     //console.log("Te dhenat hyrese: "+this.optionModel);
     //validojme formen per input te paplotesuar
     this.isValidModel = this.IsValidInput(this.optionModel);
