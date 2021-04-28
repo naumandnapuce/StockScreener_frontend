@@ -282,7 +282,7 @@
 
                 <ng-container matColumnDef="marketCap">
                   <mat-header-cell class="mat-column-marketCap" *matHeaderCellDef> MarketCap </mat-header-cell>
-                  <mat-cell class="mat-column-marketCap" *matCellDef="let element"> {{element.marketCap}} </mat-cell>
+                  <mat-cell class="mat-column-marketCap" *matCellDef="let element"> {{element.raw.marketCap/1000000000 | number: '1.0-2'}} B </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="basePeRatio">
