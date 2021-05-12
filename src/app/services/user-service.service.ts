@@ -9,20 +9,22 @@ import {UserModel} from '../models/user-model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<UserModel | null>;
-    public currentUser: Observable<UserModel | null>;
+    private baseUrl =  environment.apiUrl + "/api/Login";
+    private currentUserSubject: BehaviorSubject<UserModel>;
+    public currentUser: Observable<UserModel>;
+
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<UserModel | null>(JSON.parse((localStorage.getItem("currentUser"))||'{}'))
+        this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')|| '{}'));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): UserModel | null {
+    public get currentUserValue(): UserModel {
         return this.currentUserSubject.value;
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`https://nscreeener20210409142600.azurewebsites.net/api/Login`, { username, password })
+        return this.http.post<any>(this.baseUrl, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -34,6 +36,6 @@ export class AuthenticationService {
     logout() {
       // remove user from local storage to log user out
       localStorage.removeItem('currentUser');
-      this.currentUserSubject.next(null);
+      this.currentUserSubject.next(null as any);
   }
 }
