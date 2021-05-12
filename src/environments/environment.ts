@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:82"
+  apiUrl: "https://nscreeener20210409142600.azurewebsites.net"
 };
 
 /*
